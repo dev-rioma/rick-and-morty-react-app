@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { ApiContext } from "../../../../context/Apicontext";
 
 
-const Gender = ({ setPage, setGender, setMoreCharacters }) => {
+const Gender = () => {
+  const { setPage, setGender, setMoreCharacters } = useContext(ApiContext)
   const [IsActivate, setIsActivate] = useState(false);
   const [selected, setSelected] = useState("Gender")
   let gendersList = ["female", "male", "genderless", "unknown"];

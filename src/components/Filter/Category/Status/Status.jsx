@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { ApiContext } from "../../../../context/Apicontext";
 
-const Status = ({ setPage, setStatus, setMoreCharacters }) => {
+const Status = () => {
+  const { setPage, setStatus, setMoreCharacters } = useContext(ApiContext)
   const [IsActivate, setIsActivate] = useState(false);
   const [selected, setSelected] = useState("Status")
   let statusList = ["Alive", "Dead", "Unknown"];

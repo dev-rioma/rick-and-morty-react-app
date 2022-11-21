@@ -1,4 +1,8 @@
-const Search = ({ setSearch, setPage, setMoreCharacters }) => {
+import { useContext } from "react";
+import { ApiContext } from "../../context/Apicontext";
+const Search = () => {
+
+  const { setSearch, setPage, setMoreCharacters } = useContext(ApiContext)
 
   return (
     <div className="w-64 h-16">

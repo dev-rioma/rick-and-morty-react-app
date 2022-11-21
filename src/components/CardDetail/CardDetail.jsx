@@ -9,9 +9,6 @@ const CardDetail = () => {
   const { name, image, status, species, type, gender, origin, location, episode } = characterDetail
   const api = `https://rickandmortyapi.com/api/character/${id}`
 
-  // const listEpisode = episode?.map((element) => element[element.length-1]);
-  // const indexEpisode = listEpisode.splice(0,4);
-  // console.log(indexEpisode)
 
   useEffect(() =>{
     async function fetchData() {
@@ -20,11 +17,9 @@ const CardDetail = () => {
       setCharacterDetail(data)
       
     }
-    // async function fetchEpisodeData() {
-    
-    // }
+
     fetchData()   
-  }, [id])
+  }, [api])
   
   
   

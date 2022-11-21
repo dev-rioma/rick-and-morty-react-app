@@ -1,6 +1,8 @@
 
 
 const Character = ({ character }) => {
+
+  
   return (
     <>
       <div className='card-character shadow-lg rounded-sm'>
