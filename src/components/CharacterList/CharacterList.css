@@ -1,0 +1,16 @@
+.container-card{
+  display: flex;
+  flex-direction: row; 
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+   
+ }
+ 
+ .conatainer-search{
+   margin: 2rem 3rem 2rem 3rem;
+   display: flex;
+   justify-content: space-evenly;
+ }
+ 
