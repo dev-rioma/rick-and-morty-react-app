@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { ApiContext } from "../../context/Apicontext";
 import GenderModal from "../Filter/Category/Gender/GenderModal";
 import SpeciesModal from "../Filter/Category/Species/SpeciesModal";
 import StatusModal from "../Filter/Category/Status/StatusModal";
@@ -7,7 +8,8 @@ import Modal from "../Modal/Modal";
 import iconFilterBtn from '../../assets/filter_list_24px.svg'
 import CloseIcon from '../../assets/close_24px.svg'
 
-const BtnModal = ({ setPage, status, setStatus, gender, setGender, species, setSpecies }) => {
+const BtnModal = () => {
+  const { setPage, status, setStatus, gender, setGender, species, setSpecies } = useContext(ApiContext)
   const [ModalActive, setModalActive] = useState(false);
   const [StatusFilter, setStatusFilter] = useState("");
   const [GenderFilter, setGenderFilter] = useState("")

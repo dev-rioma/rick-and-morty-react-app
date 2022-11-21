@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { ApiContext } from "../../../../context/Apicontext";
 
 
-const Species = ({ setPage, setSpecies, setMoreCharacters }) => {
+const Species = () => {
+  const { setPage, setSpecies, setMoreCharacters } = useContext(ApiContext)
   const [IsActivate, setIsActivate] = useState(false);
   const [selected, setSelected] = useState("Species")
   let speciesList = [

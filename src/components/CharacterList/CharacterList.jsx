@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react'
+import { useContext } from 'react'
+import { ApiContext } from '../../context/Apicontext';
 import { Link } from "react-router-dom";
 import Character from '../Character/Character'
 import Search from '../Search/Search'
@@ -10,65 +11,21 @@ import BtnModal from '../BtnModal/BtnModal';
 
 
 const CharacterList = () => {
-  const [characters, setCharacters] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [page, setPage] = useState(1)
-  const [moreCharacters, setMoreCharacters] = useState(8)
-  const [search, setSearch] = useState("")
-  const [infoCharacter, setInfoCharacter] = useState([])
-  const [status, setStatus] = useState("");
-  const [gender, setGender] = useState("");
-  const [species, setSpecies] = useState("");
+  const {characters, loading, page, loadMore, moreCharacters, infoCharacter} = useContext(ApiContext)
   
-  var api = `https://rickandmortyapi.com/api/character?page=${page}&name=${search}&status=${status}&gender=${gender}&species=${species}`;
-
   
-  useEffect(() =>{
-    async function fetchData() {
-      const response = await fetch(api)
-      const data = await response.json()
-      setLoading(false)
-      if (page === 1){
-      setCharacters(data.results)
-      setInfoCharacter(data.info)
-      }
-      if (page > 1) {
-        setCharacters([...characters, ...data.results]) }
-
-    }
-    fetchData()
-    
-  }, [api])
-
- 
-
- const loadMore = () => {
-  if (moreCharacters == (characters.length)) {
-    setPage((page) => page + 1)
-  } 
-    setMoreCharacters((moreCharacters) => moreCharacters + 4)
- }
-
-
-
   return (
     <div className='container-main  flex flex-col items-center  sm:mx-10'>
       <div className='conatainer-search flex flex-wrap justify-center gap-8'>
-        <Search setSearch={setSearch} setPage={setPage} setMoreCharacters={setMoreCharacters}/>
+        <Search />
         <div className='hidden sm:flex flex-wrap justify-center gap-8 '>
-          <Status setPage={setPage}  setStatus={setStatus} setMoreCharacters={setMoreCharacters}/>
-          <Gender setPage={setPage} setGender={setGender} setMoreCharacters={setMoreCharacters}/>
-          <Species setPage={setPage} setSpecies={setSpecies} setMoreCharacters={setMoreCharacters}/>
+          <Status />
+          <Gender />
+          <Species />
         </div>
         <div className='container-BtnModal sm:hidden'>
           <BtnModal 
-            setPage={setPage} 
-            status={status} 
-            setStatus={setStatus}
-            gender={gender} 
-            setGender={setGender}
-            species={species}
-            setSpecies={setSpecies}
+            
           />
         </div>
       </div>
@@ -76,6 +33,7 @@ const CharacterList = () => {
       {loading ? (
       <div>Cargando...</div>
       ) : (
+        
         <div className='container-card xl:mx-52 sm:mx-2 md:mx-18 lg:mx-32' >
           { characters.slice(0, moreCharacters).map((character) => {
             return (
