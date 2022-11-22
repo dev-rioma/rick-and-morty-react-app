@@ -2,25 +2,30 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import { AiOutlineArrowLeft } from 'react-icons/ai'
+import EpisodeDteail from './EpisodeDteail';
+
 
 const CardDetail = () => {
   const { id } = useParams()
   const [characterDetail , setCharacterDetail] = useState([])
   const { name, image, status, species, type, gender, origin, location, episode } = characterDetail
   const api = `https://rickandmortyapi.com/api/character/${id}`
+  let listIndex = []
 
-
+ 
   useEffect(() =>{
-    async function fetchData() {
+    async function fetchDataDetail() {
       const response = await fetch(api)
       const data = await response.json()
       setCharacterDetail(data)
       
     }
-
-    fetchData()   
-  }, [api])
+    fetchDataDetail()   
+  },[api]) 
   
+  if (episode !== undefined){
+    listIndex = episode.map((e) => e[e.length-1])
+  } 
   
   
 
@@ -69,32 +74,7 @@ const CardDetail = () => {
         </div>
         <div className='col-2 w-96'>
         <p className='font-bold text-gray-700'>Episodes</p>
-        <ul>
-          <li>
-            <p></p>
-            <p></p>
-          </li>
-          <li>
-            <p></p>
-            <p></p>
-          </li>
-          <li>
-            <p></p>
-            <p></p>
-          </li>
-          <li>
-            <p></p>
-            <p></p>
-          </li>
-          <li>
-            <p></p>
-            <p></p>
-          </li>
-          <li>
-            <p></p>
-            <p></p>
-          </li>
-        </ul>
+          <EpisodeDteail listIndex={listIndex}/>
         </div>
        
       </div>

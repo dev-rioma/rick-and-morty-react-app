@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 
+
 export const ApiContext = createContext()
 
 export const ApicontextProvider = (props) => {
@@ -12,11 +13,13 @@ export const ApicontextProvider = (props) => {
   const [status, setStatus] = useState("");
   const [gender, setGender] = useState("");
   const [species, setSpecies] = useState("");
+
+  
   
 
   var api = `https://rickandmortyapi.com/api/character?page=${page}&name=${search}&status=${status}&gender=${gender}&species=${species}`;
 
- 
+  
 
   async function fetchData(api) {
     const response = await fetch(api)
