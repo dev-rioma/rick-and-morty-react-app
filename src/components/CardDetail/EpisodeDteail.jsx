@@ -6,19 +6,16 @@ const EpisodeDteail = ({listIndex}) => {
   const api = `https://rickandmortyapi.com/api/episode/${listIndex.slice(0,4).join(",")}`
   
   
-
-  useEffect(() => {
-    async function fetchDataEpisode() {
-      const response = await fetch(api)
-      const data = await response.json()
-      setepisodeDetail(data)
-    }
-    if(listIndex.length !== 0) {
-      fetchDataEpisode()
-    }
-    
-  }, [listIndex])
   
+  
+  useEffect(() =>{
+    (async function ()  {
+      let data = await fetch(api).then((res)=> res.json())
+      setepisodeDetail(data)  
+    }) ()  
+  },[api]) 
+  
+  console.log(listIndex.length)
   
   return (
     <>

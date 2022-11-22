@@ -14,19 +14,15 @@ const CardDetail = () => {
 
  
   useEffect(() =>{
-    async function fetchDataDetail() {
-      const response = await fetch(api)
-      const data = await response.json()
-      setCharacterDetail(data)
-      
-    }
-    fetchDataDetail()   
+    (async function ()  {
+      let data = await fetch(api).then((res)=> res.json())
+      setCharacterDetail(data)  
+    }) ()  
   },[api]) 
   
   if (episode !== undefined){
     listIndex = episode.map((e) => e[e.length-1])
   } 
-  
   
 
   return (
