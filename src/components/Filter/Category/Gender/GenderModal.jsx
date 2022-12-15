@@ -2,14 +2,14 @@ import React, { useState } from "react";
 
 const GenderModal = ({ setGenderFilter }) => {
   const [IsActivate, setIsActivate] = useState(false);
-  const [selected, setSelected] = useState("Gender")
+  const [selected, setSelected] = useState("Gender");
   let gendersList = ["female", "male", "genderless", "unknown"];
-  
-  const handleFilter = (e) =>{
-    setSelected(e.target.textContent)
-    setGenderFilter(e.target.textContent)
-    setIsActivate(false)
-  }
+
+  const handleFilter = (e) => {
+    setSelected(e.target.textContent);
+    setGenderFilter(e.target.textContent);
+    setIsActivate(false);
+  };
 
   return (
     <div className="dropdown">
@@ -47,11 +47,11 @@ const GenderModal = ({ setGenderFilter }) => {
               </li>
             );
           })}
-          <li 
+          <li
             onClick={() => {
-              setSelected("Gender")
-              setGenderFilter("")
-              setIsActivate(false)
+              setSelected("Gender");
+              setGenderFilter("");
+              setIsActivate(false);
             }}
             className="dropdown-item text-gray-700 block px-4 py-2 text-sm active:bg-gray-100 text-gray-900 font-bold hover:bg-gray-100 text-gray-900"
           >

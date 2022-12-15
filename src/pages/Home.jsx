@@ -1,16 +1,18 @@
-import CharacterList from '../components/CharacterList/CharacterList'
-import  titleWeb  from '/src/assets/titleRickAndMorty.svg'
+import BtnLoadMore from "../components/BtnLoadMore/BtnLoadMore";
+import CharacterList from "../components/CharacterList/CharacterList";
+import CommandButtons from "../components/CommandButtons/CommandButtons";
 
+import MainTitle from "../components/Maintitle/MainTitle";
 
 const Home = () => {
   return (
     <>
-      <div className='container-title-main flex justify-center mt-6 mb-6'>
-        <img src={titleWeb} alt="title" />
-      </div>
+      <MainTitle />
+      <CommandButtons />
       <CharacterList />
+      <BtnLoadMore />
     </>
   );
-}
+};
 
 export default Home;
